@@ -1,4 +1,4 @@
-![logo](https://gitlab.com/rodrigovalla/azarte/-/raw/master/public/assets/img/attractorlogo.png)
+![logo](https://gitlab.com/rodrigovalla/azarte/-/raw/master/public/assets/img/attractorlogo_64.png)
 
 # azarte
 
