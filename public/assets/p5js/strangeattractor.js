@@ -14,13 +14,12 @@ function setup() {
 	startConfig(config);
 	createColors();
 	noLoop();
-	textSize(width/15);
-	textAlign(CENTER, CENTER);
-	text("click", cx, cy);
+	printClick();
 	print("Strange Attractors v0.60");
 }
 
 function draw() {
+	print("1");
 	translate(cx, cy);
 	rotate(ang);
 	for (let p = 0; p < 10; p++) {
@@ -31,12 +30,11 @@ function draw() {
 				getNewCoordinates();
 				i ++;
 			} else {
+				noLoop();
+				active = false;
 				print("Coordinates are strange...");
 				rotate(-ang);
-				textSize(width/15);
-				textAlign(CENTER, CENTER);
-				text("error", 0, 0);
-				noLoop();
+				printError();
 			}
 		}
 	}
@@ -171,4 +169,16 @@ function getEqParameters(s) {
 		}
 	}
 	return plist;
+}
+
+function printClick() {
+	textSize(width/15);
+	textAlign(CENTER, CENTER);
+	text("click", cx, cy);
+}
+
+function printError() {
+	textSize(width/15);
+	textAlign(CENTER, CENTER);
+	text("error", 0, 0);
 }
