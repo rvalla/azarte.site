@@ -8,7 +8,7 @@ let lastclick;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	background(0);
+	background(210,210,190);
 	config = getURLParams();
   startConfig(config);
 	createColors();
@@ -20,10 +20,16 @@ function draw() {
 	rotate(ang);
 	for (let p = 0; p < 10; p++) {
 		if (i < ic && active === true) {
-			stroke(random(colors));
-			point(x, y);
-			getNewCoordinates();
-			i ++;
+			if (Number.isFinite(x) && Number.isFinite(y)) {
+				stroke(random(colors));
+				point(x, y);
+				getNewCoordinates();
+				i ++;
+			} else {
+				textSize(30);
+				textAlign(CENTER, CENTER);
+				text("error", 0, 0);
+			}
 		}
 	}
 }
@@ -52,18 +58,18 @@ function mousePressed() {
 }
 
 function createColors() {
-	let br = map(second(), 0, 59, 0, 155);
-	let bg = map(minute(), 0, 59, 0, 155);
-	let bb = map(hour(), 0, 23, 0, 155);
+	let br = map(second(), 0, 59, 0, 75);
+	let bg = map(minute(), 0, 59, 0, 75);
+	let bb = map(hour(), 0, 23, 0, 75);
 	for (let c = 0; c < cc; c++) {
 		colors.push(createColor(br, bg, bb));
 	}
 }
 
 function createColor(br, bg, bb) {
-	let r = br + random(100);
-  let g = bg + random(100);
-  let b = bb + random(100);
+	let r = br + random(75);
+  let g = bg + random(75);
+  let b = bb + random(75);
   return color(r, g, b);
 }
 
@@ -108,13 +114,13 @@ function startConfig(config) {
   }
 	let string = config.xc;
   if (typeof string === "string") {
-    xc = getEqParameters(string.split(","));
+    xc = getEqParameters(string.split("_"));
   } else {
 		xc = [-0.9,0.2,0.74,-0.75,0.3,1.4,-2.5];
 	}
 	string = config.yc;
 	if (typeof string === "string") {
-    yc = getEqParameters(string.split(","));
+    yc = getEqParameters(string.split("_"));
   } else {
 		yc = [-0.7,-0.6,-0.64,1.55,-0.2,-1.1,-0.4];
 	}
