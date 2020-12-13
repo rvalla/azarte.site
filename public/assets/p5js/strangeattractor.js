@@ -1,3 +1,4 @@
+let attractor;
 let xc = [];
 let yc = [];
 let x, y, px, py;
@@ -12,7 +13,7 @@ function setup() {
 	config = getURLParams();
   startConfig(config);
 	createColors();
-	print("Strange Attractors v0.50");
+	print("Strange Attractors v0.60");
 }
 
 function draw() {
@@ -26,9 +27,12 @@ function draw() {
 				getNewCoordinates();
 				i ++;
 			} else {
-				textSize(30);
+				print("Coordinates are strange...");
+				rotate(-ang);
+				textSize(width/15);
 				textAlign(CENTER, CENTER);
 				text("error", 0, 0);
+				noLoop();
 			}
 		}
 	}
@@ -37,9 +41,24 @@ function draw() {
 function getNewCoordinates() {
 	px = x;
 	py = y;
+	switch (attractor) {
+		case 0:
+			getNewCAttractor0();
+			break;
+		case 1:
+			getNewCAttractor1();
+			break;
+	}
+}
+
+function getNewCAttractor0() {
 	x = getNewCoordinate(xc);
 	y = getNewCoordinate(yc);
-	print(x + " " + y);
+}
+
+function getNewCAttractor1() {
+	x = getNewCoordinate(xc);
+	y = x * sin(py);
 }
 
 function getNewCoordinate(plist) {
@@ -84,7 +103,17 @@ function startConfig(config) {
 	} else {
 		ang = HALF_PI;
 	}
-  let number = Number(config.iterations);
+	let number = Number(config.type);
+  if (typeof(number) === "number" && Number.isInteger(number)) {
+		if (number < 2) {
+			attractor = number;
+		} else {
+			attractor = 0;
+		}
+  } else {
+    attractor = 0;
+  }
+  number = Number(config.iterations);
   if (typeof(number) === "number" && Number.isInteger(number)) {
     ic = number;
   } else {

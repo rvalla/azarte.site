@@ -20,9 +20,6 @@
 }
 
 html {
-  font-size: 1em;
-  font-family: "vollkorn", "Trebuchet MS", sans-serif;
-  color: #d9d9bf;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
@@ -34,7 +31,9 @@ html {
 }
 
 body {
-  font-size: 100%;
+  font-size: 120%;
+  font-family: "vollkorn", "Trebuchet MS", sans-serif;
+  color: #d9d9bf;
   display: grid;
 	background: url(../img/attractor.png)  no-repeat center fixed;
   background-color: #d2d2be;
@@ -103,12 +102,12 @@ body {
 button {
   background-color: #d2d2be;
   font-family: "oswald", "Trebuchet MS", sans-serif;
-  font-size: 1.25em;
+  font-size: 130%;
   border: none;
   border-radius: 8px;
   color: #343420;
   margin: 2px 2px;
-  padding: 0.3em;
+  padding: 2%;
   text-align: center;
   text-decoration: none;
   transition-duration: 0.4s;
@@ -210,7 +209,7 @@ hr.hidden {
 }
 
 h1 {
-  font-size: 1.6em;
+  font-size: 170%;
 	font-family: "moderno", "Trebuchet MS", sans-serif;;
   color: #d2d2be;
   margin: 2px 2px 2px 2px;
@@ -220,11 +219,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.35em;
-	font-family: "oswald", "Trebuchet MS", sans-serif;;
-  color: #ffffcc;
+  font-size: 125%;
+	font-family: "moderno", "Trebuchet MS", sans-serif;;
+  color: #d2d2be;
   margin: 2px 2px 2px 2px;
-  padding: 1vh;
+  padding: 0 0 1.5vh 0;
   text-align: left;
   text-decoration: none;
 }
@@ -258,6 +257,18 @@ audio {
 
 input {
 	width: 100%;
+	font-size: 70%;
+	padding: 2%;
+  margin: 3px 0 6px 0;
+	background-color: #d2d2be;
+	border-color: #343420;
+	border-radius: 8px;
+  box-sizing: border-box;
+}
+
+select {
+	width: 100%;
+	font-size: 70%;
 	padding: 2%;
   margin: 3px 0 6px 0;
 	background-color: #d2d2be;
@@ -270,14 +281,24 @@ input[type=submit] {
 	width: 35%;
 	background-color: #d2d2be;
 	font-family: "oswald", "Trebuchet MS", sans-serif;
-	font-size: 1.25em;
+	font-size: 130%;
 	border: none;
 	border-radius: 8px;
 	color: #343420;
 	margin: 2px 2px;
-	padding: 0.3em;
+	padding: 2%;
 	text-align: center;
 	text-decoration: none;
+}
+
+input[type=submit]:hover {
+  background-color: #343420;
+	color: #d2d2be;
+}
+
+input[type=submit]:active {
+	background-color: #d2d2be;
+	color: #343420;
 }
 
 label {
@@ -290,7 +311,7 @@ img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 96%;
+	width: 100%;
 	border-radius: 16px;
  	padding: 1vh;
 }
@@ -302,6 +323,10 @@ img.vcenter {
 
 img.small {
   width: 20vh;
+}
+
+p {
+	margin: 2vh 0 2vh 0;
 }
 
 a {
@@ -327,16 +352,4 @@ a:hover {
 
 .t_right {
   text-align: right;
-}
-
-.t_yellow {
-  color: #d2d250;
-}
-
-.t_red {
-  color: #c74d4a;
-}
-
-.t_blue {
-  color: #3c8cdc;
 }
