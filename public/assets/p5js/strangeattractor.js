@@ -13,6 +13,11 @@ function setup() {
 	config = getURLParams();
   startConfig(config);
 	createColors();
+	noLoop();
+	rotate(-ang);
+	textSize(width/15);
+	textAlign(CENTER, CENTER);
+	text("click", cx, cy);
 	print("Strange Attractors v0.60");
 }
 
@@ -58,7 +63,7 @@ function getNewCAttractor0() {
 
 function getNewCAttractor1() {
 	x = getNewCoordinate(xc);
-	y = x * sin(py);
+	y = x * sin(px);
 }
 
 function getNewCoordinate(plist) {
@@ -71,6 +76,8 @@ function mousePressed() {
   if (100 < millis() - lastclick) {
 		if (active === false) {
 			active = true;
+			background(210,210,190);
+			loop();
 		}
     lastclick = millis();
   }
