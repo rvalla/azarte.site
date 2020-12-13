@@ -11,10 +11,9 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(210,210,190);
 	config = getURLParams();
-  startConfig(config);
+	startConfig(config);
 	createColors();
 	noLoop();
-	rotate(-ang);
 	textSize(width/15);
 	textAlign(CENTER, CENTER);
 	text("click", cx, cy);
