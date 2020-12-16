@@ -172,12 +172,16 @@ function getEqParameters(s) {
 }
 
 function printClick() {
+	fill(0);
+	noStroke();
 	textSize(width/15);
 	textAlign(CENTER, CENTER);
 	text("click", cx, cy);
 }
 
 function printError() {
+	fill(0);
+	noStroke();
 	textSize(width/15);
 	textAlign(CENTER, CENTER);
 	text("error", 0, 0);
