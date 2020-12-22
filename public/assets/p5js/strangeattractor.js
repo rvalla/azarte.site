@@ -1,14 +1,19 @@
 let attractor;
+let xclist = [];
+let yclist = [];
 let xc = [];
 let yc = [];
 let x, y, px, py;
 let cx, cy, ang;
 let colors = [];
 let i, ic, cc, active;
-let lastclick;
+let thecanvas;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
+	thecanvas = document.getElementsByTagName("canvas")[0];
+	thecanvas.addEventListener("mousedown", processEv, false);
+	thecanvas.addEventListener("touchend", processEv, false);
 	background(210,210,190);
 	config = getURLParams();
 	startConfig(config);
@@ -19,14 +24,13 @@ function setup() {
 }
 
 function draw() {
-	print("1");
 	translate(cx, cy);
 	rotate(ang);
 	for (let p = 0; p < 10; p++) {
 		if (i < ic && active === true) {
 			if (Number.isFinite(x) && Number.isFinite(y)) {
 				stroke(random(colors));
-				point(x, y);
+				point(map(x, -3.5, 3.5, -cx, cx), map(y, -3.5, 3.5, -cy, cy));
 				getNewCoordinates();
 				i ++;
 			} else {
@@ -45,39 +49,32 @@ function getNewCoordinates() {
 	py = y;
 	switch (attractor) {
 		case 0:
-			getNewCAttractor0();
+			x = getNewCoordinate(xc);
+			y = getNewCoordinate(yc);
 			break;
 		case 1:
-			getNewCAttractor1();
+			x = getNewCoordinate(xc);
+			y = sin(px);
 			break;
+		case 2:
+			x = getNewCoordinate(xc);
+			y = x;
 	}
 }
 
-function getNewCAttractor0() {
-	x = getNewCoordinate(xc);
-	y = getNewCoordinate(yc);
-}
-
-function getNewCAttractor1() {
-	x = getNewCoordinate(xc);
-	y = x * sin(px);
-}
-
 function getNewCoordinate(plist) {
-	let c = plist[0] + plist[1] * px + plist[2] * py + plist[3] * pow(abs(px), plist[4]) +
-					plist[5] * pow(abs(py), plist[6]);
+	let c = plist[0] + plist[1] * px + plist[2] * pow(px, 2) + plist[3] * px * py + plist[4] * py + plist[5] * pow(py, 2);
 	return c;
 }
 
-function mousePressed() {
-  if (100 < millis() - lastclick) {
-		if (active === false) {
-			active = true;
-			background(210,210,190);
-			loop();
-		}
-    lastclick = millis();
-  }
+function processEv() {
+  if (active === false) {
+		active = true;
+		background(210,210,190);
+		loop();
+	}
+	event.preventDefault();
+  return false;
 }
 
 function createColors() {
@@ -96,20 +93,32 @@ function createColor(br, bg, bb) {
   return color(r, g, b);
 }
 
+function printClick() {
+	fill(0);
+	noStroke();
+	textSize(width/15);
+	textAlign(CENTER, CENTER);
+	text("click", cx, cy);
+}
+
+function printError() {
+	fill(0);
+	noStroke();
+	textSize(width/15);
+	textAlign(CENTER, CENTER);
+	text("error", 0, 0);
+}
+
 function startConfig(config) {
 	i = 0;
 	lastclick = 0;
 	active = false;
 	cx = width / 2;
 	cy = height / 2;
-	if (cx > cy) {
-		ang = 0;
-	} else {
-		ang = HALF_PI;
-	}
+	buildAttractorList();
 	let number = Number(config.type);
   if (typeof(number) === "number" && Number.isInteger(number)) {
-		if (number < 2) {
+		if (number < 3) {
 			attractor = number;
 		} else {
 			attractor = 0;
@@ -134,7 +143,7 @@ function startConfig(config) {
     x = number;
 		px = x;
   } else {
-		x = 50;
+		x = 0;
 		px = x;
   }
 	number = Number(config.oy);
@@ -142,20 +151,32 @@ function startConfig(config) {
     y = number;
 		py = y;
   } else {
-		y = 50;
+		y = 0;
 		py = y;
   }
+	number = Number(config.angle);
+  if (typeof(number) === "number" && Number.isFinite(number)) {
+    ang = number;
+  } else {
+		if (cx > cy) {
+			ang = 0;
+		} else {
+			ang = HALF_PI;
+		}
+  }
 	let string = config.xc;
+	let aux = floor(random(xclist.length));
+	print(aux);
   if (typeof string === "string") {
     xc = getEqParameters(string.split("_"));
   } else {
-		xc = [-0.9,0.2,0.74,-0.75,0.3,1.4,-2.5];
+		xc = xclist[aux];
 	}
 	string = config.yc;
 	if (typeof string === "string") {
     yc = getEqParameters(string.split("_"));
   } else {
-		yc = [-0.7,-0.6,-0.64,1.55,-0.2,-1.1,-0.4];
+		yc = yclist[aux];
 	}
 }
 
@@ -171,18 +192,11 @@ function getEqParameters(s) {
 	return plist;
 }
 
-function printClick() {
-	fill(0);
-	noStroke();
-	textSize(width/15);
-	textAlign(CENTER, CENTER);
-	text("click", cx, cy);
-}
-
-function printError() {
-	fill(0);
-	noStroke();
-	textSize(width/15);
-	textAlign(CENTER, CENTER);
-	text("error", 0, 0);
+function buildAttractorList() {
+	xclist = [];
+	yclist = [];
+	xclist[0] = [-1.2,-0.6,-0.5,0.1,-0.7,0.2];
+	yclist[0] = [-0.9,0.9,0.1,-0.3,-1,0.3];
+	xclist[1] = [1,0,-1.4,0,0.3,0];
+	yclist[1] = [0,1,0,0,0,0];
 }
