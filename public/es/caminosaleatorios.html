@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="azarte: caminos" />
+	<meta property="og:description" content="Trayectorias de puntos pero con mucho ruido." />
+	<meta property="og:image" content="https://gitlab.com/rodrigovalla/azarte/-/raw/master/public/assets/img/attractor.jpg" />
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/attractorlogo.png"  type="image/png">
+  <title>azarte: caminos</title>
+</head>
+
+<body>
+  <section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box green">
+			<h1>caminos aleatorios</h1>
+			<p>Se puede dibujar caminando al azar. ¡Y también con un poco de trampa!</p>
+			</div>
+			<div class="box blue">
+			<h1>cambiá los valores</h1>
+			<form action="../scripts/randompaths.html">
+			<label for="points">Cantidad de puntos:</label><br>
+			<input type="text" id="points" name="points" value="100"><br>
+			<label for="centrox" style="width: 49%;">centro x:</label>
+			<label for="centroy" style="width: 49%;">centro y:</label><br>
+			<input type="text" id="centrox" name="cx" value="200" style="width: 49%;">
+			<input type="text" id="centrox" name="cy" value="200" style="width: 49%;"><br>
+			<label for="tipo">Tipo de camino:</label><br>
+			<select id="tipo" name="type">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select><br>
+			<label for="coefx">Grupos en x:</label><br>
+			<input type="text" id="coefx" name="ox" value="100_200_300"><br>
+			<label for="coefy">Grupos en y:</label><br>
+			<input type="text" id="coefy" name="oy" value="100_125_150"><br>
+			<br><input type="submit" value="probá">
+			</form>
+			</div>
+			</div>
+			</div>
+	</div>
+  </section>
+</body>
+</html>
