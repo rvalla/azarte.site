@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="azarte: dibujos gravitatorios" />
+	<meta property="og:description" content="Dibujando con la gravitación de Newton." />
+	<meta property="og:image" content="https://gitlab.com/rodrigovalla/azarte/-/raw/master/public/assets/img/attractor.jpg" />
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/attractorlogo.png"  type="image/png">
+  <title>azarte: gravedad</title>
+</head>
+
+<body>
+  <section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box green">
+			<h1>dibujos gravitatorios</h1>
+			<p>Los cuerpos se atraen unos a otros. La fuerza con la que se atraen depende de la masa que tienen. Y si
+			los dejamos pueden dibujar cosas muy interesantes.</p>
+			</div>
+			<div class="box blue">
+			<h1>cambiá los valores</h1>
+			<form action="../scripts/orbitalpaint.html">
+			<label for="centrox" style="width: 49%;">centro x:</label>
+			<label for="centroy" style="width: 49%;">centro y:</label><br>
+			<input type="text" id="centrox" name="cx" value="200" style="width: 49%;">
+			<input type="text" id="centroy" name="cy" value="200" style="width: 49%;"><br>
+			<label for="stars" style="width: 49%;">estrellas:</label>
+			<label for="asteroids" style="width: 49%;">asteroides:</label><br>
+			<input type="text" id="stars" name="sn" value="1" style="width: 49%;">
+			<input type="text" id="asteroids" name="an" value="1" style="width: 49%;"><br>
+			<label for="gconstant">Constante G:</label><br>
+			<input type="text" id="gconstant" name="g" value="5"><br>
+			<br><input type="submit" value="probá">
+			</form>
+			</div>
+			</div>
+			</div>
+	</div>
+  </section>
+</body>
+</html>
