@@ -111,7 +111,6 @@ function printError() {
 
 function startConfig(config) {
 	i = 0;
-	lastclick = 0;
 	active = false;
 	cx = width / 2;
 	cy = height / 2;

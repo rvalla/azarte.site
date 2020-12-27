@@ -106,7 +106,6 @@ function printError() {
 }
 
 function startConfig(config) {
-	lastclick = 0;
 	active = false;
 	let number = Number(config.type);
   if (typeof(number) === "number" && Number.isInteger(number)) {
