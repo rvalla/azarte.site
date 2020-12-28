@@ -67,6 +67,8 @@ function processEv() {
 			state = 0;
 			break;
   }
+	event.preventDefault();
+  return false;
 }
 
 function play() {
