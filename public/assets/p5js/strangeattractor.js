@@ -4,9 +4,9 @@ let yclist = [];
 let xc = [];
 let yc = [];
 let x, y, px, py;
-let cx, cy, ang;
+let cx, cy, tx, ty, ang;
 let colors = [];
-let i, ic, cc, active;
+let i, ic, cc, active, state;
 let thecanvas;
 
 function setup() {
@@ -24,7 +24,7 @@ function setup() {
 }
 
 function draw() {
-	translate(cx, cy);
+	translate(tx, ty);
 	rotate(ang);
 	for (let p = 0; p < 10; p++) {
 		if (i < ic && active === true) {
@@ -35,10 +35,11 @@ function draw() {
 				i ++;
 			} else {
 				noLoop();
-				active = false;
 				print("Coordinates are strange...");
 				rotate(-ang);
 				printError();
+				resetAttractor();
+				active = false;
 			}
 		}
 	}
@@ -70,11 +71,32 @@ function getNewCoordinate(plist) {
 function processEv() {
   if (active === false) {
 		active = true;
+		state = 1;
 		background(210,210,190);
 		loop();
+	} else {
+		if (state === 1) {
+			noLoop();
+			state = 2;
+		} else if (state === 2) {
+			saveCanvas("AttractorPaint", "png");
+			state = 0;
+			resetAttractor();
+			active = false;
+		}
 	}
 	event.preventDefault();
   return false;
+}
+
+function resetAttractor() {
+	x = 0;
+	y = 0;
+	px = x;
+	py = y;
+	let aux = floor(random(xclist.length));
+	xc = xclist[aux];
+	yc = yclist[aux];
 }
 
 function createColors() {
@@ -114,6 +136,7 @@ function startConfig(config) {
 	active = false;
 	cx = width / 2;
 	cy = height / 2;
+	state = 0;
 	buildAttractorList();
 	let number = Number(config.type);
   if (typeof(number) === "number" && Number.isInteger(number)) {
@@ -131,6 +154,18 @@ function startConfig(config) {
   } else {
     ic = 100000;
   }
+	number = Number(config.cx);
+	if (typeof(number) === "number" && Number.isInteger(number)) {
+		tx = number;
+	} else {
+		tx = width / 2;
+	}
+	number = Number(config.cy);
+	if (typeof(number) === "number" && Number.isInteger(number)) {
+		ty = number;
+	} else {
+		ty = height / 2;
+	}
 	number = Number(config.colorcount);
   if (typeof(number) === "number" && Number.isInteger(number)) {
     cc = number;
@@ -165,7 +200,6 @@ function startConfig(config) {
   }
 	let string = config.xc;
 	let aux = floor(random(xclist.length));
-	print(aux);
   if (typeof string === "string") {
     xc = getEqParameters(string.split("_"));
   } else {

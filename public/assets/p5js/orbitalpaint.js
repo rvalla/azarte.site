@@ -63,7 +63,7 @@ function processEv() {
 			stop();
 			break;
 		case 2:
-			saveCanvas("GracityPaint", ".png");
+			saveCanvas("GravityPaint", "png");
 			state = 0;
 			break;
   }

@@ -1,4 +1,4 @@
-let behavior, ox, oy, ang;
+let behavior, state, ox, oy, ang;
 let x = [];
 let y = [];
 let cx, cy;
@@ -60,14 +60,24 @@ function getRandomToLimit(c, center) {
 function getRandomAttraction(c, center) {
 	let d = center - c;
 	let f = map(d, -center, center, -1, 1);
-	return random(6) * f;
+	return random(4) * f;
 }
 
 function processEv() {
   if (active === false) {
 		active = true;
+		state = 1;
 		background(210,210,190);
 		loop();
+	} else {
+		if (state === 1) {
+			noLoop();
+			state = 2;
+		} else if (state === 2) {
+			saveCanvas("RandomPaint", "png");
+			state = 0;
+			active = false;
+		}
 	}
 	event.preventDefault();
   return false;
@@ -107,6 +117,7 @@ function printError() {
 
 function startConfig(config) {
 	active = false;
+	state = 0;
 	let number = Number(config.type);
   if (typeof(number) === "number" && Number.isInteger(number)) {
 		if (number < 3) {
