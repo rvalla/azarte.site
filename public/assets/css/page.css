@@ -131,6 +131,22 @@ button.big {
   width: 60%;
 }
 
+ul, ol {
+	display: block;
+	padding-left: 2em;
+	padding-right: 1em;
+	padding-top: 5px;
+	padding-bottom: : 5px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+ul {
+	list-style-image: url("../img/dot.png")
+}
+
 @media screen and (max-width: 1600px) {
   .page {
     width: 75%;
