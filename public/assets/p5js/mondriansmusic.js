@@ -48,7 +48,7 @@ function drawRectangle() {
 	stroke(colors[2]);
 	strokeWeight(5);
 	fill(colors[activecolor]);
-	let d = map(millis() - start, 0, duration, 0, cw - margin);
+	let d = constrain(map(millis() - start, 0, duration, margin, cw), margin, width - margin);
 	if (width > height) {
 		rect(position, margin, d - position, ch);
 	} else {
@@ -56,6 +56,7 @@ function drawRectangle() {
 	}
 	activecolor = (activecolor + 1) % 2;
 	position = d + margin;
+	print(position);
 }
 
 function checkState() {
