@@ -1,5 +1,5 @@
 let state;
-let linew, behavior, scale;
+let linew, behavior, cleaning, scale;
 let px, py, x, y, segments;
 let thecanvas;
 
@@ -17,9 +17,17 @@ function setup() {
 }
 
 function processEv() {
-	if (state === 0) {
+	if (state === -1) {
 		state = 1;
 		background(210,210,190);
+		stroke(0);
+		strokeWeight(linew);
+		drawLine();
+	} else if (state == 0) {
+		state = 1;
+		if (cleaning) {
+			background(210,210,190);
+		}
 		stroke(0);
 		strokeWeight(linew);
 		drawLine();
@@ -122,7 +130,7 @@ function printClick() {
 }
 
 function startConfig(config) {
-	state = 0;
+	state = -1;
 	let number = Number(config.type);
   if (typeof(number) === "number" && Number.isInteger(number)) {
     behavior = number;
@@ -140,6 +148,12 @@ function startConfig(config) {
     scale = number;
   } else {
     scale = 5;
+	}
+	let string = config.clean;
+	if (typeof(string) === "string" && string === "false") {
+    cleaning = false;
+  } else {
+    cleaning = true;
 	}
 	setOrigin();
 }
