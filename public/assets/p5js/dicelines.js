@@ -56,31 +56,33 @@ function getNewCoordinatesA() {
 			py = y;
 			break;
 		case 2:
-			py = y;
-			y += d2 * scale;
 			px = x;
+			x += d2 * scale;
+			py = y;
+			y -= d2 * scale;
 			break;
 		case 3:
 			px = x;
 			x -= d2 * scale;
 			py = y;
+			y -= d2 * scale;
 			break;
 		case 4:
-			py = y;
-			y -= d2 * scale;
 			px = x;
+			x -= d2 * scale;
+			py = y;
 			break;
 		case 5:
 			px = x;
-			x += d2 * scale;
+			x -= d2 * scale;
 			py = y;
 			y += d2 * scale;
 			break;
 		case 6:
 			px = x;
-			x -= d2 * scale;
+			x += d2 * scale;
 			py = y;
-			y -= d2 * scale;
+			y += d2 * scale;
 			break;
 	}
 }
