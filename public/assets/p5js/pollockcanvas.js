@@ -1,5 +1,6 @@
 let colors = [];
 let cc, active;
+let x, y, px, py;
 let brush, biterations, bsize;
 let thecanvas;
 
@@ -15,6 +16,7 @@ function setup() {
 	brush = new pollockbrush(bsize, biterations);
 	createColors();
 	printClick();
+	noLoop();
 	print("Pollock canvas v0.50");
 }
 
@@ -23,9 +25,17 @@ function processEv() {
 	if (active === true) {
 		fill(random(colors));
 		noStroke();
-	  brush.paint(mouseX, mouseY, pmouseX, pmouseY);
+		x = mouseX;
+		y = mouseY;
+	  brush.paint(x, y, px, py);
+		px = x;
+		py = y;
 	} else {
 		active = true;
+		x = mouseX;
+		y = mouseY;
+		px = x;
+		py = y;
 		background(210,210,190);
 	}
 	event.preventDefault();
@@ -70,7 +80,7 @@ function startConfig(config) {
   if (typeof(number) === "number" && Number.isInteger(number)) {
     biterations = number;
   } else {
-    biterations = 30;
+    biterations = 35;
   }
 	number = Number(config.colorcount);
   if (typeof(number) === "number" && Number.isInteger(number)) {

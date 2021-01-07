@@ -57,8 +57,8 @@ class star {
   }
 
   getCoordinate(limit) {
-    let l = limit / 3;
-    return l + random(l);
+    let l = limit / 4;
+    return 1.5 * l + random(l);
   }
 
   setInitSpeed(center) {

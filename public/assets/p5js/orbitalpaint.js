@@ -108,16 +108,14 @@ function startConfig(config) {
     an = 1;
   }
 	number = Number(config.cx);
+	cx = width / 2;
   if (typeof(number) === "number" && Number.isInteger(number) && number < width) {
-    cx = number;
-  } else {
-    cx = width / 2;
+    cx += number;
   }
 	number = Number(config.cy);
+	cy = height / 2;
   if (typeof(number) === "number" && Number.isInteger(number) && number < height) {
-    cy = number;
-  } else {
-    cy = height / 2;
+    cy += number;
   }
 	number = Number(config.g);
   if (typeof(number) === "number" && Number.isFinite(number)) {

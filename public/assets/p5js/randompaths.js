@@ -135,16 +135,14 @@ function startConfig(config) {
     p = 100;
   }
 	number = Number(config.cx);
+	cx = width / 2;
 	if (typeof(number) === "number" && Number.isInteger(number)) {
-		cx = number;
-	} else {
-		cx = width / 2;
+		cx += number;
 	}
 	number = Number(config.cy);
+	cy = height / 2;
 	if (typeof(number) === "number" && Number.isInteger(number)) {
-		cy = number;
-	} else {
-		cy = height / 2;
+		cy += number;
 	}
 	number = Number(config.angle);
   if (typeof(number) === "number" && Number.isFinite(number)) {
@@ -166,25 +164,25 @@ function startConfig(config) {
   }
 	let string = config.ox;
   if (typeof string === "string") {
-    ox = getOrigins(string.split("_"));
+    ox = getOrigins(string.split("_"), cx);
   } else {
 		ox = [cx - round(random(cx)), cx + round(random(100) - 50), cx + round(random(cx))];
 	}
 	string = config.oy;
 	if (typeof string === "string") {
-    oy = getOrigins(string.split("_"));
+    oy = getOrigins(string.split("_"), cy);
   } else {
 		oy = [cy -  round(random(cy)), cy + round(random(100) - 50), cy + round(random(cy))];
 	}
 }
 
-function getOrigins(s) {
+function getOrigins(s, c) {
 	plist = [];
 	for (let p = 0; p < s.length; p++) {
 		try {
-			plist[p] = Number(s[p]);
+			plist[p] = c + Number(s[p]);
 		} catch (error) {
-			plist[p] = cx;
+			plist[p] = c;
 			print("That is not a valid parameter...");
 		}
 	}
