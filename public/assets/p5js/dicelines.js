@@ -1,5 +1,5 @@
 let state;
-let linew, behavior, cleaning, scale;
+let colors, linew, behavior, cleaning, scale;
 let px, py, x, y, segments;
 let thecanvas;
 
@@ -20,7 +20,7 @@ function processEv() {
 	if (state === -1) {
 		state = 1;
 		background(210,210,190);
-		stroke(0);
+		stroke(random(colors));
 		strokeWeight(linew);
 		drawLine();
 	} else if (state == 0) {
@@ -28,7 +28,7 @@ function processEv() {
 		if (cleaning) {
 			background(210,210,190);
 		}
-		stroke(0);
+		stroke(random(colors));
 		strokeWeight(linew);
 		drawLine();
 	} else if (state === 2) {
@@ -131,6 +131,7 @@ function printClick() {
 
 function startConfig(config) {
 	state = -1;
+	colors = [];
 	let number = Number(config.type);
   if (typeof(number) === "number" && Number.isInteger(number)) {
     behavior = number;
@@ -156,6 +157,23 @@ function startConfig(config) {
     cleaning = true;
 	}
 	setOrigin();
+	createColors();
+}
+
+function createColors() {
+	let br = map(second(), 0, 59, 0, 75);
+	let bg = map(minute(), 0, 59, 0, 75);
+	let bb = map(hour(), 0, 23, 0, 75);
+	for (let c = 0; c < 10; c++) {
+		colors.push(createColor(br, bg, bb));
+	}
+}
+
+function createColor(br, bg, bb) {
+	let r = br + random(75);
+  let g = bg + random(75);
+  let b = bb + random(75);
+  return color(r, g, b);
 }
 
 function setOrigin() {
