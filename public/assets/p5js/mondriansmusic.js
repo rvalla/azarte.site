@@ -1,5 +1,7 @@
 let colors = [];
-let start, duration, speedfactor, minstep, timestep, soundevents, sound, melodies, mdurations, activemelody;
+let start, duration, messages;
+let speedfactor, minstep, timestep, soundevents;
+let sound, melodies, mdurations, activemelody;
 let activecolor, rgb, position, cw, ch, margin;
 let thecanvas, state, ms;
 
@@ -13,14 +15,14 @@ function setup() {
 	config = getURLParams();
 	startConfig(config);
 	frameRate(24);
-	buildMelodies(minstep, timestep);
-	printClick();
 	noLoop();
+	buildMelodies(minstep, timestep);
+	printClick(-1);
 	print("Mondrian's music v0.50");
 }
 
 function draw() {
-	if (state === 1) {
+	if (state === 1 || state === 2) {
 		checkState();
 	}
 }
@@ -42,6 +44,8 @@ function processEv() {
 		case -1:
 			userStartAudio();
 			ms = new musicalsounds();
+			background(255);
+			printClick(activemelody);
 			state = 0;
 			break;
 	}
@@ -76,22 +80,31 @@ function finishStrip() {
 
 function checkState() {
 	if (millis() - start > duration) {
-		state = 0;
-		noLoop();
-		finishStrip();
-		saveCanvas("MondriansMelody_" + str(activemelody), "png");
-		if (activemelody < 3) {
-			activemelody += 1;
+		if (state === 1) {
+			state = 2;
+			noLoop();
+			finishStrip();
+			saveCanvas("MondriansMelody_" + str(activemelody + 1), "png");
+			if (activemelody < 3) {
+				activemelody += 1;
+			}
+			setTimeout(newLevel, 1000);
 		}
 	}
 }
 
-function printClick() {
+function newLevel() {
+	state = 0;
+	background(255);
+	printClick(activemelody);
+}
+
+function printClick(n) {
 	fill(0);
 	noStroke();
 	textSize(width/15);
 	textAlign(CENTER, CENTER);
-	text("two clicks", width / 2, height / 2);
+	text(messages[n+1], width / 2, height / 2);
 }
 
 function startConfig(config) {
@@ -105,6 +118,7 @@ function startConfig(config) {
 	position = 10;
 	pd = position;
 	melodies = [];
+	messages = [];
 	activemelody = 0;
 	mdurations = [7000, 7000, 7000, 7000];
 	setRGB();
@@ -131,6 +145,20 @@ function startConfig(config) {
   } else {
     speedfactor = 1.7;
   }
+	let string = config.lan;
+	if (typeof(string) === "string" && string === "en") {
+		messages[0] = "click\n(start audio)";
+		messages[1] = "click\n(level 1 - mikrokosmos)";
+		messages[2] = "click\n(level 2 - mikrokosmos)";
+		messages[3] = "click\n(level 3 - mikrokosmos)";
+		messages[4] = "click\n(level 4 - random melody)";
+	} else {
+		messages[0] = "click\n(iniciar audio)";
+		messages[1] = "click\n(nivel 1 - mikrokosmos)";
+		messages[2] = "click\n(nivel 2 - mikrokosmos)";
+		messages[3] = "click\n(nivel 3 - mikrokosmos)";
+		messages[4] = "click\n(nivel 4 - melodía aleatoria)";
+	}
 	colors.push(color(0,0,0));
 	colors.push(color(0,0,0));
 	colors.push(color(0,0,0));
@@ -169,7 +197,7 @@ function loadMelody(n) {
 		setTimeout(play, delay * speedfactor, melodies[n][e][0]);
 		delay += melodies[n][e][1];
 	}
-	duration = mdurations[n];
+	duration = mdurations[n] + 500;
 }
 
 function buildMelodies(ms, ts) {
@@ -186,7 +214,7 @@ function buildMelodies(ms, ts) {
 		melodies[3][s][1] = delay;
 	}
 	mdurations[0] = 5000 * speedfactor;
-	mdurations[1] = 4500 * speedfactor;
-	mdurations[2] = 3300 * speedfactor;
-	mdurations[3] = 1000 + duration * speedfactor;
+	mdurations[1] = 5050 * speedfactor;
+	mdurations[2] = 3200 * speedfactor;
+	mdurations[3] = 500 + duration * speedfactor;
 }
