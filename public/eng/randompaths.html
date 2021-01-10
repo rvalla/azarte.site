@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="azarte: paths" />
+	<meta property="og:description" content="Random walk from hundreds of dots." />
+	<meta property="og:image" content="https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/RP_0.jpg" />
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/attractorlogo.png"  type="image/png">
+  <title>azarte: paths</title>
+</head>
+
+<body>
+  <section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box blue">
+			<h1>random paths</h1>
+			<p>It can be drawn by walking randomly. You can also ask the computer to draw the random path made by hundreds of
+			colored dots. The computer will generate random numbers to draw (as if it were throwing dice, but thousands of
+			times).</p>
+			<img src="../assets/img/RP_2.png" />
+		</div>
+		<div class="box green">
+			<h1>decision making</h1>
+			<p>Will any drawings be formed? You can decide how many points you will use. You can also decide how many groups
+			of points there will be when the computer starts drawing. You can also choose between different algorithms.</p>
+			<img src="../assets/img/RP_3.png" />
+		</div>
+		<div class="box red">
+			<h1>set up your canvas</h1>
+			<form action="../scripts/randompaths.html">
+			<label for="points">Points count:</label><br>
+			<input type="text" id="points" name="points" value="100"><br>
+			<label for="centrox" style="width: 49%;">x center:</label>
+			<label for="centroy" style="width: 49%;">y center:</label><br>
+			<input type="text" id="centrox" name="cx" value="-10" style="width: 49%;">
+			<input type="text" id="centroy" name="cy" value="10" style="width: 49%;"><br>
+			<label for="tipo">Algorithm:</label><br>
+			<select id="tipo" name="type">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select><br>
+			<label for="coefx">Group in x:</label><br>
+			<input type="text" id="coefx" name="ox" value="-150_0_150"><br>
+			<label for="coefy">Groups in y:</label><br>
+			<input type="text" id="coefy" name="oy" value="-50_-150_-50"><br>
+			<br><input type="submit" value="run">
+			</form>
+		</div>
+		</div>
+	</div>
+  </section>
+</body>
+</html>
