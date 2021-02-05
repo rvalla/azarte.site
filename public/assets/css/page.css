@@ -260,8 +260,9 @@ iframe.full {
   min-height: 40vh;
 }
 
-iframe.video {
-  padding: 1vh;
+embed {
+	width: 100%;
+ 	padding: 1vh;
 }
 
 audio {
