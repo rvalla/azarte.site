@@ -260,9 +260,8 @@ iframe.full {
   min-height: 40vh;
 }
 
-embed {
-	width: 100%;
- 	padding: 1vh;
+iframe.video {
+  padding: 1vh;
 }
 
 audio {
@@ -369,4 +368,10 @@ a:hover {
 
 .t_right {
   text-align: right;
+}
+
+.vimeo {
+  position: absolute;
+	width: 100%;
+	height: 100%;
 }
