@@ -1,4 +1,4 @@
-![logo](https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/attractorlogo_64.png)
+![logo](https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/logo_64.png)
 
 # azarte site
 
