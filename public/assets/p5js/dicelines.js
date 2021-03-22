@@ -1,5 +1,5 @@
 let state;
-let colors, linew, behavior, cleaning, scale;
+let colors, linew, behavior, saving, cleaning, scale;
 let px, py, x, y, segments;
 let thecanvas;
 
@@ -33,7 +33,6 @@ function processEv() {
 		drawLine();
 	} else if (state === 2) {
 		state = 0;
-		setOrigin();
 		saveCanvas("DiceLine", "png");
 	}
 	event.preventDefault();
@@ -50,7 +49,12 @@ function drawLine() {
 		line(x, y, px, py);
 		segments += 1;
 	}
-	state = 2;
+	if (saving) {
+		state = 2;
+	} else {
+		state = 0;
+	}
+	setOrigin();
 	print(segments + " segments were drawn...");
 }
 
@@ -142,7 +146,7 @@ function startConfig(config) {
   if (typeof(number) === "number" && Number.isInteger(number)) {
     linew = number;
   } else {
-    linew = 2;
+    linew = 3;
 	}
 	number = Number(config.scale);
   if (typeof(number) === "number" && Number.isInteger(number)) {
@@ -150,11 +154,17 @@ function startConfig(config) {
   } else {
     scale = 5;
 	}
-	let string = config.clean;
-	if (typeof(string) === "string" && string === "false") {
-    cleaning = false;
+	let string = config.save;
+	if (typeof(string) === "string" && string === "true") {
+    saving = true;
   } else {
+    saving = false;
+	}
+	string = config.clean;
+	if (typeof(string) === "string" && string === "true") {
     cleaning = true;
+  } else {
+    cleaning = false;
 	}
 	setOrigin();
 	createColors();
