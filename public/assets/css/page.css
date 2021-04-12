@@ -82,7 +82,10 @@ body {
 .box {
   width: 96%;
   float: center;
-  margin: 2vh;
+  margin-top: 2vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2vh;
   padding: 4vh;
 	border-radius: 16px;
 }
@@ -124,7 +127,7 @@ button:active {
 }
 
 button.small {
-  width: 35%;
+  width: 40%;
 }
 
 button.big {
@@ -330,5 +333,5 @@ a:hover {
 	display: block;
 	width: 100%;
 	margin: auto;
-	padding: 3%;
+	padding: 0.5%;
 }
