@@ -183,24 +183,27 @@ ul {
   }
 }
 
-h1 {
-  font-size: 170%;
-	font-family: "moderno", "Trebuchet MS", sans-serif;;
+h1, h2, h3 {
+	font-family: "moderno", "Trebuchet MS", sans-serif;
   color: #d2d2be;
-  margin: 2px 2px 2px 2px;
-  padding: 0 0 3vh 0;
+  padding: 0 0 0 0;
   text-align: left;
   text-decoration: none;
 }
 
+h1 {
+	font-size: 170%;
+	margin: 2px 2px 2vh 2px;
+}
+
 h2 {
   font-size: 125%;
-	font-family: "moderno", "Trebuchet MS", sans-serif;;
-  color: #d2d2be;
-  margin: 2px 2px 2px 2px;
-  padding: 0 0 1.5vh 0;
-  text-align: left;
-  text-decoration: none;
+	margin: 2px 2px 2vh 2px;
+}
+
+h3 {
+  font-size: 125%;
+	margin: 4vh 2px 2vh 2px;
 }
 
 iframe {
@@ -301,7 +304,7 @@ img.small {
 }
 
 p {
-	margin: 2vh 0 2vh 0;
+	margin: 0 0 2vh 0;
 }
 
 a {
@@ -327,6 +330,11 @@ a:hover {
 
 .t_right {
   text-align: right;
+}
+
+.t_mono {
+  font-family: monospace;
+	font-size: 135%;
 }
 
 .vimeo {
