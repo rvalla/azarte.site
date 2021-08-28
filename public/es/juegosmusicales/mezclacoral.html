@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rodrigo Valla">
+	<meta property="og:title" content="azarte: mezcla coral" />
+	<meta property="og:description" content="El director saca una carta, los coreutas cantan lo que diga la suya." />
+	<meta property="og:image" content="https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/JM_mezclacoral_00.jpg" />
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="icon" href="../../assets/img/logo_64.png"  type="image/png">
+  <title>azarte: mezcla coral</title>
+</head>
+
+<body>
+  <section>
+	<div class="page">
+		<div class="container-1c">
+		<div class="box red">
+			<h1>mezcla coral (2018)</h1>
+			<p>Una pieza musical estocástica para jugar en la que un crupier guía a un grupo personas que cantan
+			hasta que se les acaba el aire. La pieza tiene 3 movimientos: truco, julepe y escoba.</p>
+		</div>
+		<div class="box blue">
+			<h2>materiales necesarios</h2>
+			<p>Para jugar <b>Mezcla coral</b> hacen falta al menos 21 intérpretes (mejor si son más).
+			Alguien deberá asumir la dirección de la obra (el crupier). Se necesita una cantidad de barajas españolas
+			suficiente para que el crupier tenga una baraja completa y los demás (los coreutas) tengan una única carta.
+			</p>
+		</div>
+		<div class="box green">
+			<h2>funciones del crupier</h2>
+			<p>El crupier deberá ubicarse de manera de poder ser visto por todos los coreutas. Sus funciones serán:
+			</p>
+			<ul>
+				<li>mezclar(): 1. Alterando el orden de la baraja con cualquier técnica conocida (mezcla americana, mezcla faro,
+				mezcla indú, por imbricación a una mano como René Lavand, etc). 2. Cortando. 3. Tomando la baraja en posición
+			 	de dar.</li>
+				<li>dar(): 1. Tomando la carta superior. 2. Mirándola y nombrándola en voz alta. 3. Inspirando profundamente.
+				4. Arrojando la carta al suelo. 5. Esperando el silencio siguiente.</li>
+			</ul>
+		</div>
+		<div class="box blue">
+			<h2>funciones del coreuta</h2>
+			<ul>
+				<li>evaluar(carta_del_crupier): 1. Comparando el palo y el valor de la carta nombrada por el crupier con su carta.
+				2. Decidiendo si hay <i>coincidencia</i> (son del mismo palo) o <i>coincidencia exacta</i> (son del mismo palo
+				y valor). 3. Buscando en la partitura el palo de su carta.</li>
+				<li>cantar(palabra, intensidad): 1. Inspirando profundamente con el crupier. 2. Esperar a que éste lance su
+				carta al suelo. 3. Cantar libremente la palabra indicada con la intensidad indicada un número de veces igual
+				al valor de su carta. 4. Mantener la última sílaba hasta quedarse sin aire.</li>
+			</ul>
+		</div>
+		<div class="box red">
+			<h2>algoritmo lúdico</h2>
+			<p class="t_mono">
+				silencio()<br>
+				repetir(3):<br>
+				&emsp;crupier.mezclar()<br>
+				&emsp;repetir(n)<br>
+				&emsp;&emsp;crupier.dar()<br>
+				&emsp;&emsp;coreuta.evaluar(carta crupier)<br>
+				&emsp;&emsp;si (coincidencia exacta):<br>
+				&emsp;&emsp;&emsp;coreuta.gritar("Vamos todavía")<br>
+				&emsp;&emsp;o si (coincidencia):<br>
+				&emsp;&emsp;&emsp;coreuta.cantar(palabra roja, fuerte)<br>
+				&emsp;&emsp;si no:<br>
+				&emsp;&emsp;&emsp;coreuta.cantar(palabra azul, suave)<br>
+				crupier.guardarbaraja(bolsillo)<br>
+				aplausos()
+			</p>
+		</div>
+		<div class="box green">
+			<h2>Truco (n = 3)</h2>
+			<table style="width: 90%;">
+				<tr><td><img src="../../assets/img/mc_basto.png" /></td>
+						<td><img src="../../assets/img/mc_espada.png" /></td>
+						<td><img src="../../assets/img/mc_oro.png" /></td>
+						<td><img src="../../assets/img/mc_copa.png" /></td></tr>
+				<tr><td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">truco</b><br>
+					<b style="color: #5280d3;">buenas</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">cuatro</b><br>
+					<b style="color: #5280d3;">malas</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">...vido</b><br>
+					<b style="color: #5280d3;">falta</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">ancho</b><br>
+					<b style="color: #5280d3;">canté</b></td></tr>
+			</table>
+		</div>
+		<div class="box green">
+			<h2>Julepe (n = 5)</h2>
+			<table style="width: 90%;">
+				<tr><td><img src="../../assets/img/mc_basto.png" /></td>
+						<td><img src="../../assets/img/mc_espada.png" /></td>
+						<td><img src="../../assets/img/mc_oro.png" /></td>
+						<td><img src="../../assets/img/mc_copa.png" /></td></tr>
+				<tr><td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">...lepe</b><br>
+					<b style="color: #5280d3;">...bliga</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">pozo</b><br>
+					<b style="color: #5280d3;">puesta</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">triunfo</b><br>
+					<b style="color: #5280d3;">caer</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">mano</b><br>
+					<b style="color: #5280d3;">ciega</b></td></tr>
+			</table>
+			</div>
+			<div class="box green">
+			<h2>Escoba (n = 3)</h2>
+			<table style="width: 90%;">
+				<tr><td><img src="../../assets/img/mc_basto.png" /></td>
+						<td><img src="../../assets/img/mc_espada.png" /></td>
+						<td><img src="../../assets/img/mc_oro.png" /></td>
+						<td><img src="../../assets/img/mc_copa.png" /></td></tr>
+				<tr><td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">seten...</b><br>
+					<b style="color: #5280d3;">punto</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">quince</b><br>
+					<b style="color: #5280d3;">...tenta</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">siete</b><br>
+					<b style="color: #5280d3;">oro</b></td>
+				<td style="font-size: 125%; text-align: center;"><b style="color: #cc362d;">cartas</b><br>
+					<b style="color: #5280d3;">mesa</b></td></tr>
+			</table>
+		</div>
+		<div class="box blue">
+			<h2>la primera versión</h2>
+			<p>Sólo estrenamos <i>Julepe</i>, el segundo movimiento de <b>Mezcla coral</b>. El estreno estuvo a cargo
+			del auditorio del <b>9º Festival del Ingenio</b>, el cual tuvo lugar en el <b>Colegio Nacional Buenos Aires</b>
+			en octubre de 2018. </p>
+			<div class="vimeo"><iframe src="https://player.vimeo.com/video/299987387?h=4923457094" width="640" height="360" frameborder="0"
+					allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+		</div>
+		<div class="box green">
+			<p>Si te interesa conocer más detalles de la obra o te animás a estrenar los movimientos que faltan podés leer la
+			<a href="../../assets/doc/rvalla_mezclacoral_partitura.pdf">partitura</a>. También podés
+			contactarme por <a href="mailto:rodrigovalla@protonmail.ch">mail</a> o escribirme a
+			<a href="https://t.me/rvalla">telegram</a>.</p>
+			<p><a href="../juegosmusicales.html"><button class="small">volvé</button></a></p>
+		</div>
+	</div>
+	</div>
+  </section>
+</body>
+</html>

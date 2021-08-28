@@ -125,12 +125,6 @@ function startConfig(config) {
   } else {
     steps = 6;
   }
-	number = Number(config.width);
-  if (typeof(number) === "number" && Number.isInteger(number)) {
-    w = number;
-  } else {
-    w = 6;
-  }
 	number = Number(config.delay);
   if (typeof(number) === "number" && Number.isInteger(number)) {
     delay = number;
@@ -143,6 +137,13 @@ function startConfig(config) {
   } else {
     algorithm = 0;
   }
+	if (algorithm === 3) {
+		w = 11;
+	} else if (algorithm === 4) {
+		w = 16;
+	} else {
+		w = 6;
+	}
 	for (let p = 0; p < w; p++) {
 		data[p] = 0;
 	}

@@ -19,7 +19,7 @@
 		<div class="container-3c">
 		<div class="box blue">
 			<h1>¿qué es el azar?</h1>
-			<p>Decimos que algo ocurre al azar cuando no podíamos saber de antemano que iba a ocurrir. Sabemos que si calentamos
+			<p>Decimos que algo ocurre al azar cuando no podemos saber de antemano que va a ocurrir. Sabemos que si calentamos
 			agua en una olla en algún momento va a hervir. Eso no ocurre al azar. En cambio si tiramos una moneda
 			por el aire puede caer con la cara o la cruz para arriba. No tenemos manera de saber qué cara de la moneda va a
 			a quedar arriba hasta que la tiremos.</p>
@@ -35,8 +35,46 @@
 			<p>Siempre vamos a saber alguna cosa.	No sabremos si va a llover dentro de 60 días, pero sí sabemos que o bien
 			llueve, o no llueve, o nieva o graniza.	No van a caer cucuruchos con helado del cielo. Eso es lo que hace que
 			usar el azar creativamente sea tan interesante.</p>
-			<p><a href="../index.html"><button class="small">volvé</button></a></p>
 		</div>
+		<div class="box red">
+			<h1>el largo plazo</h1>
+			<p>Si tiramos un dado muchas veces esperamos que salgan más o menos la misma cantidad de cada número. Pero
+			podemos tirar dos dados y quedarnos con el más chico o tirar tres y quedarnos con la suma. Así podemos controlar
+			la distribución que tendrán las <i>tiradas</i>.</p>
+			<p>Probá distintas opciones haciendo click en el siguiente recuadro...</p>
+		</div>
+		<div class="box green">
+			<h1>histogramas</h1>
+			<iframe class="full" id="histogram" src="../scripts/histograms.html"></iframe>
+		</div>
+		<div class="box blue">
+			<h1>tu control</h1>
+			<p>Decidí cuántas veces simular las tiradas eligiendo tu opción preferida.</p>
+			<label for="sim">Número de simulaciones:</label><br>
+			<input type="text" id="sim" name="times" value="20"><br>
+			<label for="stp">Tiradas por simulación:</label><br>
+			<input type="text" id="stp" name="steps" value="6"><br>
+			<label for="ath">Reglas:</label><br>
+			<select id="ath" name="algorithm">
+				<option value="0">Tiradas de 1 dado</option>
+				<option value="1">El menor de 2 dados</option>
+				<option value="2">El mayor de 2 dados</option>
+				<option value="3">La suma de 2 dados</option>
+				<option value="4">La suma de 3 dados</option>
+			</select><br>
+			<br><input type="button" id="btn" value="recargá">
+      <script>
+				function reload() {
+					let t = "?times=" + document.getElementById("sim").value;
+					let s = "&steps=" + document.getElementById("stp").value;
+					let a = "&algorithm=" + document.getElementById("ath").value;
+					t = t.concat(s, a);
+					let url = "../scripts/histograms.html";
+					document.getElementById("histogram").src = url + t;
+          }
+          btn.onclick = reload;
+      </script>
+			</div>
 	</div>
   </section>
 </body>
