@@ -211,9 +211,10 @@ iframe {
 	display: block;
   background-color: inherit;
   border-width: 0;
+	border-radius: 8px;
   margin-left: auto;
 	margin-right: auto;
-  margin-bottom: auto;
+  margin-bottom: 2vh;
   margin-top: auto;
 }
 
@@ -255,7 +256,7 @@ select {
   box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
 	width: 35%;
 	background-color: #d2d2be;
 	font-family: "oswald", "Trebuchet MS", sans-serif;
