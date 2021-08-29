@@ -270,12 +270,12 @@ input[type=submit], input[type=button] {
 	text-decoration: none;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, input[type=button]:hover {
   background-color: #343420;
 	color: #d2d2be;
 }
 
-input[type=submit]:active {
+input[type=submit]:active, input[type=button]:active {
 	background-color: #d2d2be;
 	color: #343420;
 }
@@ -335,7 +335,7 @@ a:hover {
 
 .t_mono {
   font-family: monospace;
-	font-size: 135%;
+	font-size: 125%;
 }
 
 .vimeo {
