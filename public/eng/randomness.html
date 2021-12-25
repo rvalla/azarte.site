@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rodrigo Valla">
+	<meta property="og:title" content="azarte: randomness" />
+	<meta property="og:description" content="Some ideas about randomness..." />
+	<meta property="og:image" content="https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/attractor.jpg" />
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/logo_64.png"  type="image/png">
+  <title>azarte: randomness</title>
+</head>
+
+<body>
+	<section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box blue">
+			<h1>randomness</h1>
+			<p>We say that something happens randomly when we cannot know in advance what is going to happen. We know that
+				if we heat water in a pot at some point it will boil. That does not happen at random. On the other hand, if
+				we flip a coin in the air it may come up heads or tails. We have no way of knowing which side of the coin is
+				going to come up until we flip it.</p>
+		</div>
+		<div class="box red">
+			<h1>unpredictable or uncertain?</h1>
+			<p>Perhaps if we flipped the coin with a special machine and we could measure very precisely its mass and the
+				impulse we give it we could know which side it is going to fall on. Is it a random event to flip a coin then?
+				As long as we don't know what is going to happen we say yes.</p>
+		</div>
+		<div class="box green">
+			<h1>you always know something</h1>
+			<p>We will always know something. We won't know if it's going to rain in 60 days, but we do know that it will
+				either rain, or not rain, or snow or hail. It rains, or it doesn't rain, or it snows or hails. No ice cream
+				cones are going to fall from the sky. That's what makes using chance creatively so interesting.</p>
+		</div>
+		<div class="box red">
+			<h1>long term</h1>
+			<p>If we roll a die we often expect to get about the same amount of each number. But we can roll two dice and
+				keep the smaller one or roll three and keep the sum. This way we can control the distribution that the rolls
+				will have.</p>
+			<p>Try different options by clicking on the following box...</p>
+		</div>
+		<div class="box green">
+			<h1>histograms</h1>
+			<iframe class="full" id="histogram" src="../scripts/histograms.html"></iframe>
+		</div>
+		<div class="box blue">
+			<h1>your control</h1>
+			<p>Decide how many rolls to simulate for your prefered configuration.</p>
+			<label for="sim">Number of simulations:</label><br>
+			<input type="text" id="sim" name="times" value="20"><br>
+			<label for="stp">Rolls by simulation:</label><br>
+			<input type="text" id="stp" name="steps" value="6"><br>
+			<label for="ath">Rules:</label><br>
+			<select id="ath" name="algorithm">
+				<option value="0">One die</option>
+				<option value="1">Minor of two dice</option>
+				<option value="2">Major of two dice</option>
+				<option value="3">Sum of two dice</option>
+				<option value="4">Sum of three dice</option>
+			</select><br>
+			<br><input type="button" id="btn" value="reload">
+      <script>
+				function reload() {
+					let t = "?times=" + document.getElementById("sim").value;
+					let s = "&steps=" + document.getElementById("stp").value;
+					let a = "&algorithm=" + document.getElementById("ath").value;
+					t = t.concat(s, a);
+					let url = "../scripts/histograms.html";
+					document.getElementById("histogram").src = url + t;
+          }
+          btn.onclick = reload;
+      </script>
+			</div>
+	</div>
+  </section>
+</body>
+</html>

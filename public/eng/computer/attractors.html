@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rodrigo Valla">
+	<meta property="og:title" content="azarte: attractors" />
+	<meta property="og:description" content="ystems of equations return points that meet with each other." />
+	<meta property="og:image" content="https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/attractor.jpg" />
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="icon" href="../../assets/img/logo_64.png"  type="image/png">
+  <title>azarte: attractors</title>
+</head>
+
+<body>
+  <section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box green">
+			<h1>strange attractors</h1>
+			<p>There are systems of equations that behave in unpredictable ways. We can use them to draw. We draw thousands
+				of points that sometimes end up all lumped together in one place, and sometimes they draw what we call a
+				<i>strange attractor</i>.</p>
+			<img src="../../assets/img/attractor_03.jpg" />
+			</div>
+			<div class="box red">
+			<h1>equations</h1>
+			<p>In a <i>strange attractor</i> the equations define the location of each point starting from the previous point,
+				recursively. It is impossible to predict in advance how it will look. Very small changes in the values of
+				the coefficients of the equations can produce completely different drawings.</p>
+			<img src="../../assets/img/attractor_02.jpg" />
+			</div>
+			<div class="box blue">
+			<h1>configure your canvas</h1>
+			<form action="../../scripts/strangeattractor.html">
+			<label for="points">Number of points:</label><br>
+			<input type="text" id="points" name="iterations" value="5000"><br>
+			<label for="coordenadax" style="width: 49%;">x:</label>
+			<label for="coordenaday" style="width: 49%;">y:</label><br>
+			<input type="text" id="coordenadax" name="ox" value="0" style="width: 49%;">
+			<input type="text" id="coordenaday" name="oy" value="0" style="width: 49%;"><br>
+			<label for="tipo">Type of attractor:</label><br>
+			<select id="tipo" name="type">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select><br>
+			<label for="coefx">Coefficients para x:</label><br>
+			<input type="text" id="coefx" name="xc" value="-1.2_-0.6_-0.5_0.1_-0.7_0.2"><br>
+			<label for="coefy">Coefficients para y:</label><br>
+			<input type="text" id="coefy" name="yc" value="-0.9_0.9_0.1_-0.3_-1_0.3"><br>
+			<br><input type="submit" value="run">
+			</form>
+			</div>
+			</div>
+			</div>
+	</div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rodrigo Valla">
+	<meta property="og:title" content="azarte: gravity drawing" />
+	<meta property="og:description" content="Drawing with the law of universal gravitation." />
+	<meta property="og:image" content="https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/GP_0.jpg" />
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="icon" href="../../assets/img/logo_64.png"  type="image/png">
+  <title>azarte: gravity</title>
+</head>
+
+<body>
+  <section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box green">
+			<h1>gravity drawings</h1>
+			<p>Bodies attract each other. The force with which they attract each other depends on the mass they have.
+				And if we let them, they can draw very interesting things. An invisible center attracts stars. Stars
+				attract asteroids...</p>
+			<img src="../../assets/img/GP_1.png" />
+		</div>
+		<div class="box blue">
+			<h1>starting point</h1>
+			<p>You can make some decisions. Actually, as soon as you define the velocity of the asteroid, the law of
+				gravity determines exactly how it will move, but I doubt you can predict what you're going to get.</p>
+			<img src="../../assets/img/GP_2.png" />
+		</div>
+		<div class="box red">
+			<h1>configure your canvas</h1>
+			<form action="../../scripts/orbitalpaint.html">
+			<label for="centrox" style="width: 49%;">x center:</label>
+			<label for="centroy" style="width: 49%;">y center:</label><br>
+			<input type="text" id="centrox" name="cx" value="50" style="width: 49%;">
+			<input type="text" id="centroy" name="cy" value="-100" style="width: 49%;"><br>
+			<label for="stars" style="width: 49%;">stars:</label>
+			<label for="asteroids" style="width: 49%;">asteroids:</label><br>
+			<input type="text" id="stars" name="sn" value="1" style="width: 49%;">
+			<input type="text" id="asteroids" name="an" value="1" style="width: 49%;"><br>
+			<label for="gconstant">G constant:</label><br>
+			<input type="text" id="gconstant" name="g" value="10"><br>
+			<br><input type="submit" value="run">
+			</form>
+		</div>
+		</div>
+		</div>
+	</div>
+  </section>
+</body>
+</html>
