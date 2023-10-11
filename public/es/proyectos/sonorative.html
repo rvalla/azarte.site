@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rodrigo Valla">
+	<meta property="og:title" content="azarte: sonorative" />
+	<meta property="og:description" content="Algunas maneras de hacer sonar a las imágenes." />
+	<meta property="og:image" content="https://gitlab.com/azarte/azarte.gitlab.io/-/raw/master/public/assets/img/attractor.jpg" />
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="icon" href="../../assets/img/logo_64.png"  type="image/png">
+  <title>azarte: sonorative</title>
+</head>
+
+<body>
+	<section>
+	<div class="page">
+		<div class="container-3c">
+		<div class="box red">
+			<h1>sonorative</h1>
+			<p>Con <b>sonorative</b> intento encontrar maneras de hacer sonar a las imágenes. El trabajo es bastante
+			artesanal. La idea es construir una onda sonora a partir de los datos guardaddos en cada pixel.
+			Los programas que lo hacen (porque hacerlo a mano sería muy cansador) están escritos en <a href="http://python.org">
+			Python</a> y están disponibles en <a href="https://gitlab.com/azarte/sonorative">GitLab</a>.
+			</a></p>
+		</div>
+		<div class="box green">
+			<h1>2d > 1d</h1>
+			<p>Los programas barren los datos de la imagen horizontal o verticalmente. En cada pixel se encuentran con los
+			datos de color (un número si la imagen está en escala de grises, tres números (rojo, verde y azul) si
+			la imagen es color). Distintos algoritmos, a partir de estos números, determinan la elongación de una muestra de la
+			señal que será guardada en un archivo de audio.
+			</p>
+		</div>
+		<div class="box blue">
+			<h1>color > amplitud</h1>
+			<p>En este caso el color define directamente la elongación de cada muestra de la señal de audio.
+			</p>
+			<img src="../../assets/img/sonorative_gradient.jpg">
+			<audio controls><source src="../../assets/audio/sonorative_testing_6a.ogg">
+				<source src="../../assets/audio/sonorative_testing_6a.mp3"></audio>
+		</div>
+		<div class="box green">
+			<h1>paisaje > amplitud</h1>
+			<p>Veamos qué pasa si la foto es más interesante.
+			</p>
+			<img src="../../assets/img/sonorative_landscape_01.jpg">
+			<audio controls><source src="../../assets/audio/sonorative_landscape_01.mp3">
+				<source src="../../assets/audio/sonorative_landscape_01.mp3.mp3"></audio>
+		</div>
+		<div class="box blue">
+			<h1>color > frecuencia</h1>
+			<p>En este caso el color define directamente la frecuencia de la función utilizada
+			para determinar la elongación de la muestra.
+			</p>
+			<img src="../../assets/img/sonorative_gradient.jpg">
+			<audio controls><source src="../../assets/audio/sonorative_testing_6f.ogg">
+				<source src="../../assets/audio/sonorative_testing_6f.mp3"></audio>
+		</div>
+		<div class="box red">
+			<h1>paisaje > frecuencia</h1>
+			<p>Otra vez, probamos con una imagen más interesante.
+			</p>
+			<img src="../../assets/img/sonorative_landscape_02.jpg">
+			<audio controls><source src="../../assets/audio/sonorative_landscape_02.mp3">
+				<source src="../../assets/audio/sonorative_landscape_02.mp3.mp3"></audio>
+		</div>
+		<div class="box blue">
+			<h1>color > espectro</h1>
+			<p>En este caso el color define la amplitud de una serie de parciales prestablecidos.
+			</p>
+			<img src="../../assets/img/sonorative_gradient.jpg">
+			<audio controls><source src="../../assets/audio/sonorative_testing_6s.ogg">
+				<source src="../../assets/audio/sonorative_testing_6s.mp3"></audio>
+		</div>
+		<div class="box red">
+			<h1>paisaje > espectro</h1>
+			<p>Probemos también este algoritmo con un paisaje.
+			</p>
+			<img src="../../assets/img/sonorative_landscape_03.jpg">
+			<audio controls><source src="../../assets/audio/sonorative_landscape_03.mp3">
+				<source src="../../assets/audio/sonorative_landscape_03.mp3.mp3"></audio>
+		</div>
+		<div class="box green">
+			<h1>dudas</h1>
+			<p>Si te interesa saber un poco más cómo funciona pero no querés leer código
+				<a href="mailto:rodrigovalla@protonmail.ch">escribirme</a> (acordate que también me encontrás en
+				<a href="https://t.me/rvalla">telegram</a> o <a rel="me" href="https://fosstodon.org/@rvalla">mastodon</a>).</p>
+			<p><a href="mailto:rodrigovalla@protonmail.ch"><button class="small">preguntá</button></a>
+				<a href="../proyectos.html"><button class="small">volvé</button></a></p>
+		</div>
+	</div>
+	</div>
+  </section>
+</body>
+</html>
